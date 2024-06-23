@@ -1,0 +1,22 @@
+<div id="bg"></div>
+
+<form [formGroup]="myForm">
+
+    <label for=""></label>
+    <input type="text" name="email" id="" placeholder="email" class="email" [(ngModel)]="user.email"
+        formControlName="email">
+    <div *ngIf="email.invalid && (email.touched || email.dirty)">
+        <p class="message" *ngIf="email.hasError('required')">Required field</p>
+        <p class="message" *ngIf="email.hasError('notvalid')">Incorrect email address</p>
+    </div>
+
+    <label for=""></label>
+    <input type="password" name="password" id="" placeholder="password" class="pass" [(ngModel)]="user.password"
+        formControlName="pass">
+    <div *ngIf="password.invalid && (password.touched||password.dirty)">
+        <p class="message" *ngIf="password.hasError('required')">Required field</p>
+    </div>
+
+    <button type="submit" (click)="login()">login</button>
+
+</form>

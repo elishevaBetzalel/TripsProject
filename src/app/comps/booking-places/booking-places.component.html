@@ -1,0 +1,32 @@
+<div class="container">
+	<table>
+		<thead>
+			<tr>
+				<th> invitationId</th>
+				<th> invitationDate</th>
+				<th> invitationTime</th>
+				<th> invitationUserId</th>
+				<th> invitationUserName</th>
+				<th> invitationTripId</th>
+				<th> invitationTripDate</th>
+				<th> tripDuration</th>
+				<th> invitationTripYhad</th>
+				<th> placeNumber</th>
+			</tr>
+		</thead>
+		<tbody *ngFor="let i of allInvitationsToTrip">
+			<tr>
+				<td> {{i.invitationId}}</td>
+				<td>{{i.invitationDate}} </td>
+				<td>{{i.invitationTime}}</td>
+				<td> {{i.invitationUserId}}</td>
+				<td>{{i.invitationUserName}}</td>
+				<td>{{i.invitationTripId}}</td>
+				<td> {{i.invitationTripDate}}</td>
+				<td>{{i.tripDuration}}</td>
+				<td>{{i.invitationTripYhad}}</td>
+				<td>{{i.placeNumber}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,30 @@
+<!-- //select -->
+
+<div class="boxs">
+  <div class="box" name="box1">
+    <select name="name" [(ngModel)]="selectedTripType">
+      <option value="0" selected>
+        <em>all trips</em>
+      </option>
+      <option *ngFor="let tt of allTripsTypes" [value]="tt.typeId">
+        {{tt.typeName}}
+      </option>
+    </select>
+  </div>
+</div>
+
+<!-- //טיולים -->
+<ul class="cards">
+  <li *ngFor="let t of newAllTrips" class="cards__item">
+    <div class="card" *ngIf="(selectedTripType==0 ||t.tripTypeId==selectedTripType)">
+      <img [src]="t.picture">
+      <div class="card__content">
+        <div class="card__title">{{t.yhad}}</div>
+        <p class="card__text">{{t.tripDate}} </p>
+        <button class="btn btn--block card__btn" (click)="moreDetails(t.tripId!)">More details</button>
+        <!-- הוספת אפשרות לראות את המשתתפים בטיול רק אם זה המנהל -->
+        <button class="btn btn--block card__btn" *ngIf="this.a.isManager==true" (click)="getParticipants(t.tripId!)"> all participants</button>
+      </div>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,61 @@
+<div id="bg"></div>
+
+<form [formGroup]="myForm">
+    <!--  class  - כולם משויכים לאימייל חוץ מהסיסמה-->
+    <label for=""></label>
+    <input type="text" name="firstName" placeholder="first name" class="" formControlName="firstName">
+    <div *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)">
+        <p class="message" *ngIf="firstName.hasError('req')">Required field</p>
+        <p class="message" *ngIf="firstName.hasError('min')">The input is too short</p>
+        <p class="message" *ngIf="firstName.hasError('notvalid')">The name must contain only letters</p>
+    </div>
+
+    <label for=""></label>
+    <input type="text" name="lastName" placeholder="last name" class="" formControlName="lastName">
+    <div *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)">
+        <p class="message" *ngIf="lastName.hasError('req')">Required field</p>
+        <p class="message" *ngIf="lastName.hasError('min')">The input is too short</p>
+        <p class="message" *ngIf="lastName.hasError('notvalid')">The name must contain only letters</p>
+    </div>
+
+    <label for=""></label>
+    <input type="tel" name="phone" placeholder="phone" class="email" formControlName="phone">
+    <div *ngIf="phone.invalid && (phone.touched || phone.dirty)">
+        <p class="message" *ngIf="phone.hasError('required')">Required field</p>
+        <p class="message" *ngIf="phone.hasError('minlength')">Wrong number</p>
+        <p class="message" *ngIf="phone.hasError('maxlength')">Wrong number</p>
+    </div>
+
+    <label for=""></label>
+    <input type="email" name="email" placeholder="email" class="email" formControlName="email">
+    <div *ngIf="email.invalid && (email.touched || email.dirty)">
+        <p class="message" *ngIf="email.hasError('required')">Required field</p>
+        <p class="message" *ngIf="email.hasError('notvalid')">Incorrect email address</p>
+    </div>
+
+    <label for=""></label>
+    <input type="password" name="password" placeholder="password" class="pass" formControlName="pass">
+    <div *ngIf="password.invalid && (password.touched || password.dirty)">
+        <p class="message" *ngIf="password.hasError('required')">Required field</p>
+    </div>
+
+    <label for=""></label>
+    <input type="password" name="passwordValidation" placeholder="password" class="pass"
+        formControlName="passValidation">
+    <div *ngIf="passwordValidation.invalid && (passwordValidation.touched || passwordValidation.dirty)">
+        <p class="message" *ngIf="passwordValidation.hasError('req')">Required field</p>
+        <p class="message" *ngIf="passwordValidation.hasError('notvalid')">Authentication failed</p>
+    </div>
+
+    <label for=""></label>
+    <p>Are you FirstAid?</p>
+    <input type="checkbox" name="FirstAid" placeholder="Are you FirstAid?" class="pass" formControlName="isFirstAid">
+
+
+    <button type="submit" *ngIf="!this.u.currentUser?.email" (click)="register()">register</button>
+
+    <button type="submit" *ngIf="this.u.currentUser?.email" (click)="update()">update</button>
+
+    <button type="submit" *ngIf="this.u.currentUser?.email" (click)="removal()">removal</button>
+
+</form>

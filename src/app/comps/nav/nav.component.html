@@ -1,0 +1,62 @@
+<div class="area"></div>
+<nav class="main-menu">
+    <ul>
+        <li>
+            <a routerLink="./login">
+                <i class="fa fa-home fa-2x"></i>
+                <span class="nav-text">
+                    Log in
+                </span>
+            </a>
+        </li>
+
+        <li class="has-subnav">
+            <a routerLink="./register">
+                <i class="fa fa-camera-retro fa-2x"></i>
+                <span class="nav-text">
+                    sign up
+                </span>
+            </a>
+        </li>
+
+        <li class="has-subnav">
+            <a routerLink="./trips">
+                <i class="fa fa-globe fa-2x"></i>
+                <span class="nav-text">
+                    All Trips
+                </span>
+            </a>
+        </li>
+
+        <li *ngIf="this.u.currentUser?.email && a.isManager==false" class="has-subnav">
+            <a routerLink="./personalArea">
+                <i class="fa fa-comments fa-2x"></i>
+                <span class="nav-text">
+                    Personal Area
+                    {{u.currentUser?.firstName}}
+                </span>
+            </a>
+        </li>
+
+        <li *ngIf="this.a.isManager==true" class="has-subnav">
+            <a routerLink="./users">
+                <i class="fa fa-film fa-2x"></i>
+                <span class="nav-text">
+                    All Users
+                </span>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="logout">
+        <li>
+            <a routerLink="./home-page">
+                <i class="fa fa-power-off fa-2x"></i>
+                <span class="nav-text">
+                    Home Page
+                </span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>

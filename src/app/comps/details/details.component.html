@@ -1,0 +1,44 @@
+<div *ngIf="this.flag">
+	<div class="wrapper">
+		<div class="whitebox">
+
+			<nav class="login">
+				<a (click)="this.flag=false" class="button button-small">X</a>
+			</nav>
+
+			<h3> Welcome! </h3>
+
+			<form action="#" class="form">
+				<input type="number" placeholder="booking Places" class="small" name="n" [(ngModel)]="num">
+			</form>
+			<a (click)="checkPlaces()" class="button button-big">SAVE</a>
+		</div>
+	</div>
+</div>
+<div class="product-card">
+	<div class="badge">Hot</div>
+	<div class="product-tumb">
+		<img [src]=currentTrip.picture alt="">
+	</div>
+	<div class="product-details">
+		<span class="product-catagory">{{currentTrip.tripTypeName}}</span>
+		<h2>destinaition: {{currentTrip.yhad}}</h2>
+		<p>
+			Date: {{currentTrip.tripDate}}
+			<br>
+			Leaving time: {{currentTrip.tripTime}}:00
+			<br>
+			Trip Duration: {{currentTrip.tripDuration}} hours
+			<br>
+			Empty Places: {{currentTrip.tripEmptyPlace}}
+			<br>
+		</p>
+		<div class="product-bottom-details">
+			<div class="product-price"><small>$96.00</small>${{currentTrip.price}}</div>
+			<div class="product-links">
+				<a (click)="this.flag=true">join♥️<i class="fa fa-heart"></i></a>
+				<a href=""><i class="fa fa-shopping-cart"></i></a>
+			</div>
+		</div>
+	</div>
+</div>

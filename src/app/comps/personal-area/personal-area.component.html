@@ -1,0 +1,92 @@
+<!-- //select -->
+
+<div class="boxs">
+  <div class="box" name="box1">
+    <select name="name" [(ngModel)]="selectedTripTime">
+      <option value="0" selected>
+        <em>all trips</em>
+      <option value="1">
+        <em> Trips from the past </em>
+      </option>
+      <option value="2">
+        <em>Trips from the future </em>
+      </option>
+      <option value="3">
+        <em>sort by types </em>
+      </option>
+      <option value="4">
+        <em>sort by price </em>
+      </option>
+    </select>
+  </div>
+</div>
+
+
+<!-- //טיולים -->
+<ul class="cards" *ngIf="selectedTripTime == 0">
+  <!-- //מעבר על מערך הטיולים המכיל רק את הטיולים של המשתמש ולפי בקשתו -->
+  <li *ngFor="let t of allUserTrips" class="cards__item">
+    <div class="card">
+      <img [src]="t.picture">
+      <div class="card__content">
+        <div class="card__title">{{t.yhad}}</div>
+        <p class="card__text">{{t.tripDate}} </p>
+        <button *ngIf="isFuture(t.tripDate!)" class="btn btn--block card__btn"
+          (click)="unsubscribe(t.tripId!)">unsubscribe</button>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<ul class="cards" *ngIf="selectedTripTime == 1">
+  <li *ngFor="let t of allUserTripsPast" class="cards__item">
+    <div class="card">
+      <img [src]="t.picture">
+      <div class="card__content">
+        <div class="card__title">{{t.yhad}}</div>
+        <p class="card__text">{{t.tripDate}} </p>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<ul class="cards" *ngIf="selectedTripTime == 2">
+  <li *ngFor="let t of allUserTripsFuture" class="cards__item">
+    <div class="card">
+      <img [src]="t.picture">
+      <div class="card__content">
+        <div class="card__title">{{t.yhad}}</div>
+        <p class="card__text">{{t.tripDate}} </p>
+        <button class="btn btn--block card__btn" (click)="unsubscribe(t.tripId!)">unsubscribe</button>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<ul class="cards" *ngIf="selectedTripTime == 3">
+  <li *ngFor="let t of sortByTypes" class="cards__item">
+    <div class="card">
+      <img [src]="t.picture">
+      <div class="card__content">
+        <div class="card__title">{{t.yhad}}</div>
+        <p class="card__text">{{t.tripDate}} </p>
+        <button *ngIf="isFuture(t.tripDate!)" class="btn btn--block card__btn"
+          (click)="unsubscribe(t.tripId!)">unsubscribe</button>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<ul class="cards" *ngIf="selectedTripTime == 4">
+  <li *ngFor="let t of sortByPrice" class="cards__item">
+    <div class="card">
+      <img [src]="t.picture">
+      <div class="card__content">
+        <div class="card__title">{{t.yhad}}</div>
+        <p class="card__text">{{t.tripDate}} </p>
+        <button *ngIf="isFuture(t.tripDate!)" class="btn btn--block card__btn"
+          (click)="unsubscribe(t.tripId!)">unsubscribe</button>
+      </div>
+    </div>
+  </li>
+</ul> 
